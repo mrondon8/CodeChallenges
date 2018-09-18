@@ -3,51 +3,53 @@ import groovy.transform.Memoized
 
 @CompileStatic
 class Replication{
+	//Brute Force
 	/*
-	 Brute Force
-	 static START = System.currentTimeMillis()
-	 def replication1(int n, int d){
-	 def start = System.currentTimeMillis()
-	 Set s = [[1]*n]
-	 //println "Initial Set: $s"
-	 d.times{
-	 Set t = []
-	 for(e in s){
-	 n.times{i->
-	 def temp = [*e]
-	 temp[i]++
-	 t << temp.sort()
-	 }
-	 }
-	 s = t
-	 //println "$it: $s"
-	 }
-	 def end = System.currentTimeMillis()
-	 println end - start
-	 println end - START
-	 s*.max().sum()/s.size()
-	 }
-	 */
+	static START = System.currentTimeMillis()
+	def replication1(int n, int d){
+		def start = System.currentTimeMillis()
+		Set s = [[1]*n]
+		//println "Initial Set: $s"
+		d.times{
+			Set t = []
+			for(e in s){
+				n.times{i->
+					def temp = [*e]
+					temp[i]++
+					t << temp
+					//t << temp.sort()
+				}
+			}
+			s = t
+			//println "$it: $s"
+		}
+		def end = System.currentTimeMillis()
+		println end - start
+		println end - START
+		s*.max().sum()/s.size()
+	}
+	*/
 
-	/* Combinations
-	 def combination(n, k){
-	 factorial(n)/factorial(k)/factorial(n-k)
-	 }
-	 def factorial(n){
-	 n ? n*factorial(n-1) : 1g
-	 }
-	 def split(n, d){
-	 if(d < 0 || n < 1)
-	 0
-	 else if(n==1)
-	 n + d
-	 else
-	 combination(n+d-1, d) + (0..n).sum{k-> combination(n,k)*split(n-k, d-n+k)}
-	 }
-	 def replication1(n, d){
-	 split(n, d)/combination(n+d-1, d)
-	 }
-	 */
+	/*
+	// Combinations
+	def combination(n, k){
+		factorial(n)/factorial(k)/factorial(n-k)
+	}
+	def factorial(n){
+		n ? n*factorial(n-1) : 1g
+	}
+	def split(n, d){
+		if(d < 0 || n < 1)
+			0
+		else if(n==1)
+			n + d
+		else
+			combination(n+d-1, d) + (0..n).sum{k-> combination(n,k)*split(n-k, d-n+k)}
+	}
+	def replication1(n, d){
+		split(n, d)/combination(n+d-1, d)
+	}
+*/
 
 
 	//	static List<List<Double>> pascal
@@ -103,8 +105,8 @@ class Replication{
 		//def r = new Replication()
 		1.times{
 			def start = System.currentTimeMillis()
-			def n = 513
-			def d = 513
+			def n = 10
+			def d = 400
 			//println "Pascal:\n$pascal"
 			println "n: $n, d:$d"
 			println "Output: ${Replication.replication1(n, d)}"
