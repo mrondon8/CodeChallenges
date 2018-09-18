@@ -105,7 +105,7 @@ class Replication{
 		//def r = new Replication()
 		1.times{
 			def start = System.currentTimeMillis()
-			def n = 10
+			def n = 400
 			def d = 400
 			//println "Pascal:\n$pascal"
 			println "n: $n, d:$d"
