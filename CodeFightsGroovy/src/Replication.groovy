@@ -49,21 +49,21 @@ class Replication{
 	 }
 	 */
 
-	
-//	static List<List<Double>> pascal
-//	static int count = 0
-//	static {
-//		pascal = [[1], [1d, 1d]]
-//		2000.times{ j->
-//			List<Double> row = [1d]
-//			def i = 0
-//			for(; i <= j; i++){
-//				row << (pascal[-1][i] + pascal[-1][i+1])
-//			}
-//			row << 1d
-//			pascal << row
-//		}
-//	}
+
+	//	static List<List<Double>> pascal
+	//	static int count = 0
+	//	static {
+	//		pascal = [[1], [1d, 1d]]
+	//		2000.times{ j->
+	//			List<Double> row = [1d]
+	//			def i = 0
+	//			for(; i <= j; i++){
+	//				row << (pascal[-1][i] + pascal[-1][i+1])
+	//			}
+	//			row << 1d
+	//			pascal << row
+	//		}
+	//	}
 	//My fastest method
 	static int size = 2000
 	static double[][] pascal = new double[size+2][size+2]
@@ -81,31 +81,33 @@ class Replication{
 		}
 	}
 	@groovy.transform.Memoized
-	double split(int n, int d){
+	static double split(int n, int d){
 		count++
-		if(d < 0 || n < 1)
+		if(n < 1 || d < 0)
 			0
 		else if(n==1)
 			n + d
-		else
-			pascal[n+d-1][d] + (double)(0..n).sum{int k->
-				pascal[n][k]*split(n-k, d-n+k)
-			}
+		else{
+			double s = pascal[n+d-1][d];
+			for(int k = 0; k <= n; k++)
+				s += split(n-k, d-n+k)*pascal[n][k]
+			s
+		}
 	}
 
-	def replication1(int n, int d){
+	static def replication1(int n, int d){
 		split(n, d)/pascal[n+d-1][d]
 	}
 
 	static void main(String[] args){
-		def r = new Replication()
+		//def r = new Replication()
 		1.times{
 			def start = System.currentTimeMillis()
-			def n = 500
-			def d = 500
+			def n = 513
+			def d = 513
 			//println "Pascal:\n$pascal"
 			println "n: $n, d:$d"
-			println "Output: ${r.replication1(n, d)}"
+			println "Output: ${Replication.replication1(n, d)}"
 			println "Iteration Count: $count"
 			def end = System.currentTimeMillis()
 			println "Time : ${end - start}ms\n"
