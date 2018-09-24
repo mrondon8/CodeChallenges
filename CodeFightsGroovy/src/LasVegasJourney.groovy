@@ -7,46 +7,72 @@
  If there's still a tie, the winner is the one with the smallest index.
  Players can choose which range of numbers they'd like, but they won't know the standard until the draw on the following day, after ticket sales are closed. That is, unless they're a master hacker like Al, who was able to figure out what the standard will be, in advance.
  Given the numbers arr, the choices of indices ranges, and the standard, your task is to find which range Al should pick in order to win!*/
-class Node{
+/**
+ * A basic node class that holds the range within this node
+ * a left and right node and the value at this node
+ * @author Miguel
+ *
+ */
+ class Node{
 	Node left
 	Node right
 	int startRange
 	int endRange
 	int value
 }
-//Appropriate name??
 
+/**
+ * A treelike structure that that is composed of nodes of ranges
+ * @author Miguel
+ *
+ */
 @groovy.transform.CompileStatic
 class RangeTree{
-	Node root = new Node()
-
-	int createTree(List r, int start, int end, Node node = root){
+	//Root node
+	Node root
+	/**
+	 * Constructor
+	 * @param array we want to perform range searches in
+	 */
+    RangeTree(List array){
+        root = new Node()
+        createTree(array, 0, array.size() - 1, root)
+    }
+    
+	/**
+	 * The method that creates the tree structure given the search array
+	 * @param r is the array we plan to build the tree structure from
+	 * @param start range
+	 * @param end range
+	 * @param node current node we work with
+	 * @return node value
+	 */
+	int createTree(List r, int start, int end, Node node){
 		node.startRange = start
 		node.endRange = end
 		if(start == end){
 			node.value = r[start]
-			return node.value
 		}else{
 			int mid = start + (end - start >> 1)
-			node.value = Math.max(createTree(r, start, mid, node.left = new Node()), createTree(r, mid+1, end, node.right = new Node()))
+            node.left = new Node()
+			node.right = new Node()
+			node.value = Math.max(createTree(r, start, mid, node.left), createTree(r, mid+1, end, node.right))
 		}
 	}
 
+	/**
+	 * Method to perform a search based on range
+	 * @param node current node under inspection
+	 * @param start represents the start of the range we are searching
+	 * @param end represents the end of the range we are searching
+	 * @return maximum value in the given range
+	 */
 	int searchRange(Node node, int start, int end){
-		println node?.dump() + " $start..$end"
-		//println node.startRange < start && node.endRange < end
-		//println node.startRange > end && node.endRange > end
 		if(node.startRange >= start && node.endRange <= end){
-			println "Found subset returning ${node.dump()}"
 			return node.value
 		}
-		else if(node.startRange > end && node.endRange > end){
-			println "Out of subset range to the right ${start}..${end} ${node.dump()} return small value"
-			return Integer.MIN_VALUE
-		}
-		else if(node.startRange < start && node.endRange < start){
-			println "Out of subset range to the left ${start}..${end} ${node.dump()} return small value"
-			return Integer.MIN_VALUE
+		else if(node.startRange > end || node.endRange < start){
+			return -1
 		}
 		else{
 			return Math.max(searchRange(node.left, start, end), searchRange(node.right, start, end))
@@ -54,38 +80,26 @@ class RangeTree{
 	}
 }
 
-def printTree(node){
-	if(node.left){
-		//println "left"
-		printTree(node.left)
-	}
-	if(node.right){
-		//println "right"
-		printTree(node.right)
-	}
-	//println "${node.value}, ${node.startRange}, ${node.endRange}"
-}
-
-def lasVegasJourney(array, ranges, standard){
-	def tree = new RangeTree()
-	tree.createTree(array, 0, array.size - 1)
-	//	printTree(tree.root)
-	//	println "Array $array"
+def lasVegasJourney(List array, List ranges, int standard){
+	def tree = new RangeTree(array)
+	int minValue = 1e6
+	int minIndex = 0
 	int i = 0
-	ranges.indexOf ranges.min{
-		def x = tree.searchRange(tree.root, it[0], it[1])
-		println "${i++} Range is ${it} Max in Range is $x width of range is ${it[1]-it[0]}"
-		println "-------------------------------------------------------------------"
-		Math.abs(x - standard) + it[1] - it[0]
+    for(List range : ranges){	
+		int temp = Math.abs(tree.searchRange(tree.root, range[0], range[1]) - standard) + range[1] - range[0]
+		if( temp < minValue ){
+			minValue = temp
+			minIndex = i
+		}
+		i++
 	}
-
-	//tree.searchRange(tree.root, 539, 547)
-
+	minIndex
 }
-
+def start = System.currentTimeMillis()
 //println lasVegasJourney([7, 1, 9, 5], [[0, 2], [2, 3], [0, 1], [3, 3], [1, 3], [0, 0]], 6)
 //println lasVegasJourney([6, 4, 1],[[2,2],  [0,1],  [0,1]], 8)
 //println lasVegasJourney([80, 18, 33, 13, 53], [[3,4], [3,4], [0,3], [0,4], [1,2], [0,4], [0,1], [2,4]], 7)
+
 println lasVegasJourney(
 		[
 			2,
@@ -1065,7 +1079,7 @@ println lasVegasJourney(
 		],
 		50
 		)
-
-
+def end = System.currentTimeMillis()
+println end - start
 
 
