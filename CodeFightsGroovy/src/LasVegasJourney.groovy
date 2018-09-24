@@ -30,13 +30,16 @@
 class RangeTree{
 	//Root node
 	Node root
+	//Array/List representation of the tree
+	List array
 	/**
 	 * Constructor
 	 * @param array we want to perform range searches in
 	 */
     RangeTree(List array){
-        root = new Node()
-        createTree(array, 0, array.size() - 1, root)
+		this.root = new Node()
+        this.array = array
+        createTree(0, array.size() - 1, root)
     }
     
 	/**
@@ -47,16 +50,16 @@ class RangeTree{
 	 * @param node current node we work with
 	 * @return node value
 	 */
-	int createTree(List r, int start, int end, Node node){
+	int createTree(int start, int end, Node node){
 		node.startRange = start
 		node.endRange = end
 		if(start == end){
-			node.value = r[start]
+			node.value = this.array[start]
 		}else{
 			int mid = start + (end - start >> 1)
             node.left = new Node()
 			node.right = new Node()
-			node.value = Math.max(createTree(r, start, mid, node.left), createTree(r, mid+1, end, node.right))
+			node.value = Math.max(createTree(start, mid, node.left), createTree(mid+1, end, node.right))
 		}
 	}
 
