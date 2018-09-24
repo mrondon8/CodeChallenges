@@ -84,6 +84,7 @@ class RangeTree{
 }
 
 def lasVegasJourney(List array, List ranges, int standard){
+    def start = System.currentTimeMillis()
 	def tree = new RangeTree(array)
 	int minValue = 1e6
 	int minIndex = 0
@@ -96,9 +97,11 @@ def lasVegasJourney(List array, List ranges, int standard){
 		}
 		i++
 	}
+    def end = System.currentTimeMillis()
+    println end - start
 	minIndex
 }
-def start = System.currentTimeMillis()
+
 //println lasVegasJourney([7, 1, 9, 5], [[0, 2], [2, 3], [0, 1], [3, 3], [1, 3], [0, 0]], 6)
 //println lasVegasJourney([6, 4, 1],[[2,2],  [0,1],  [0,1]], 8)
 //println lasVegasJourney([80, 18, 33, 13, 53], [[3,4], [3,4], [0,3], [0,4], [1,2], [0,4], [0,1], [2,4]], 7)
@@ -1082,7 +1085,6 @@ println lasVegasJourney(
 		],
 		50
 		)
-def end = System.currentTimeMillis()
-println end - start
+
 
 
