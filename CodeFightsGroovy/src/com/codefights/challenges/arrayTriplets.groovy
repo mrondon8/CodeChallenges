@@ -1,3 +1,22 @@
+/*
+Given an array of integers arr, your task is to find the number of array triplets a, b, c in arr that satisfy all of the following conditions:
+
+a + b > c
+a + c > b
+b + c > a
+Example
+
+For arr = [1, 2, 10, 5, 12, 8, 2], the output should be arrayTriplets(arr) = 5.
+
+There are 5 triplets that satisfy the condition:
+
+1, 2, 2
+10, 5, 8
+5, 12, 8
+10, 5, 12
+10, 12, 8
+so the answer is 5.
+ */
 int arrayTriplets1(r) {
     r.sort()
     int count = 0

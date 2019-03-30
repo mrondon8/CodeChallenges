@@ -1,13 +1,29 @@
 package com.codefights.challenges
 /*Al is known as one of the most talented hackers in the world. He can easily break into any system in just a blink of an eye. He's currently in Las Vegas, celebrating his partner's birthday. He'd like to gift her a diamond ring, but he's about 5 million dollars short. Luckily, he sees an opportunity in the casino games.
- There's a wagering game called Golden Spheres, where a winner is randomly chosen by a computer algorithm, and the grand prize is 5 million dollars. Here are the rules:
- To participate in the draw, each person is able to buy one ticket, which contains a range of numbers.
- The algorithm generates an indexed sequence of random integers, arr. The range of numbers on each ticket represents a range of indices from this sequence.
- On the day of the draw, another integer number is randomly generated, which is called the standard. The winner is the ticketholder whose range of indices has a maximum value in arr that's closest to standard.
- If there's a tie for closest, the winning ticket is the one with the smallest range of indices.
- If there's still a tie, the winner is the one with the smallest index.
- Players can choose which range of numbers they'd like, but they won't know the standard until the draw on the following day, after ticket sales are closed. That is, unless they're a master hacker like Al, who was able to figure out what the standard will be, in advance.
- Given the numbers arr, the choices of indices ranges, and the standard, your task is to find which range Al should pick in order to win!*/
+
+There's a wagering game called Golden Spheres, where a winner is randomly chosen by a computer algorithm, and the grand prize is 5 million dollars. Here are the rules:
+
+To participate in the draw, each person is able to buy one ticket, which contains a range of numbers.
+The algorithm generates an indexed sequence of random integers, arr. The range of numbers on each ticket represents a range of indices from this sequence.
+On the day of the draw, another integer number is randomly generated, which is called the standard. The winner is the ticketholder whose range of indices has a maximum value in arr that's closest to standard.
+If there's a tie for closest, the winning ticket is the one with the smallest range of indices.
+If there's still a tie, the winner is the one with the smallest index.
+Players can choose which range of numbers they'd like, but they won't know the standard until the draw on the following day, after ticket sales are closed. That is, unless they're a master hacker like Al, who was able to figure out what the standard will be, in advance.
+
+Given the numbers arr, the choices of indices ranges, and the standard, your task is to find which range Al should pick in order to win!
+
+Example
+
+For arr = [7, 1, 9, 5], ranges = [[0, 2], [2, 3], [0, 1], [3, 3], [1, 3], [0, 0]], and standard = 6, the output should be lasVegasJourney(arr, ranges, standard) = 3.
+
+Range	Range index	Size of range	Maximum value in range
+[0, 2]	0	3	9
+[2, 3]	1	2	9
+[0, 1]	2	2	7
+[3, 3]	3	1	5
+[1, 3]	4	3	9
+[0, 0]	5	1	7
+The ranges [0, 1], [3, 3], and [0, 0] all have a maximum value that's 1 unit away from the standard, so they're all tied for closest. Among these, [3, 3] and [0, 0] are tied for having the smallest size (each only covering one number), and since [3, 3] has a smaller index (3), it's the winning range.*/
 /**
  * A basic node class that holds the range within this node
  * a left and right node and the value at this node
@@ -32,12 +48,12 @@ class RangeTree{
 	//Root node
 	Node root
 	//Array/List representation of the tree
-	List array
+	List<Integer> array
 	/**
 	 * Constructor
 	 * @param array we want to perform range searches in
 	 */
-    RangeTree(List array){
+    RangeTree(List<Integer> array){
 		this.root = new Node()
         this.array = array
         createTree(0, array.size() - 1, root)
