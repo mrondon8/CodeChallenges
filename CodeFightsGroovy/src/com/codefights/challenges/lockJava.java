@@ -5,7 +5,6 @@ import java.util.List;
 
 public class lockJava {
 	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
 		int n = 6;
 		int v1, v2, h;
 		int[][] lock = new int[n][n];
@@ -15,8 +14,6 @@ public class lockJava {
 			e.add(i);
 		}
 
-		ArrayList<int[][]> out = new ArrayList<int[][]>();
-		ArrayList<Integer> counts = new ArrayList<Integer>();
 		//for (int z = 0; z < Integer.MAX_VALUE; z++) {
 		for( ; ; ){
 			v1 = v2 = 1;

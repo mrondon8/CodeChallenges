@@ -1,13 +1,12 @@
-import java.util.*;
-import java.io.*;
-import java.math.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
 
-class Box implements Comparable{
+class Box implements Comparable<Object>{
     float weight;
     float volume;
     int index;
@@ -58,9 +57,7 @@ public class Player {
 
     public static void main(String args[]) {
         
-        float averageVolume = 0f;
         
-        Scanner in = new Scanner(System.in);    
         //int boxCount = in.nextInt();
         int boxCount = 5;
         
@@ -85,7 +82,6 @@ public class Player {
         
         boxList.sort(null);
         
-        averageVolume /= boxCount;
         
         //System.out.println(averageVolume);
         int t = 3;

@@ -33,7 +33,6 @@ public class Nano {
 	static int nano(String operations) {
 		long start = System.currentTimeMillis();
 		String[] ops = operations.split(" ");
-		List<Integer> output = new ArrayList<>();
 		int out = 0;
 		AVLTree tree = new AVLTree();
 		try {

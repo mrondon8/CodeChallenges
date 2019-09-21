@@ -40,11 +40,10 @@ public class HLock {
     // n = 8 => 25945920; 464.775s
     // n = 9 => 518918400: 152.837min (but it's maybe not the lowest value. I'm used 1..64 range of numbers).
 	public static void main(String[] args) {
-		int maxCount = Integer.MIN_VALUE, maxValue = 0;
+		int maxValue = 0;
 		for (int i = 50_000; i < 100_000; i++){
 			int c = factorCountFast(i);
 			if(c > 100){
-				maxCount = c;
 				maxValue = i;
 				System.out.println(c+":"+maxValue+":"+p);
 			}
