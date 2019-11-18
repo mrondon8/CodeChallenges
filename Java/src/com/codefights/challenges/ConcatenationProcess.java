@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;

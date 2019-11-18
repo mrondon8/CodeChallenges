@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*Given an integer n, return the smallest integer a, such that a is a square of some integer and is greater than n.
 
 Example

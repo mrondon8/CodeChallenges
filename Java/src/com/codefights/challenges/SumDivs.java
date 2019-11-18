@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 
 public class SumDivs {
 	static long sumDivs(long n) {

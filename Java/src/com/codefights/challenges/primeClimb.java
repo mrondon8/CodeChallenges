@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*Recently, one of John Conway's $1000 problems proved to be false.
 
 The problem is called Climb to a Prime. Here's how it works: Suppose we have a positive integer n. Find its prime factorization, omitting any exponents of 1, and sort the prime factors in ascending order. Then we "bring down" the exponents, remove the multiplication sign, and form a new number. For example, suppose we have n = 60. Factorize 60 = 22 × 3 × 5, then we "bring down" the exponent 2, remove the multiplication sign, and obtain the result 2235.

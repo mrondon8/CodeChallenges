@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*A balanced ternary numeral system is a system in which each number is represented in base 3 using three digits: -1, 0, and 1. For example, 8 in the decimal notation can be represented as 10(-1) in the balanced ternary system, since 10(-1)bal3 = 1 * 32 + 0 * 31 + (-1) * 30 = 9 + 0 - 1 = 8.
 
 Given a number n in the decimal numeral system, your task is to calculate the sum of its digits in the balanced ternary system.

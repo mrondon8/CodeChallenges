@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 
 public class WailingGhosts {
 	static Object wailingGhosts(String s) {

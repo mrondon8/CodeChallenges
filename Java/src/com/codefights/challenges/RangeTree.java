@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /**
  * A basic node class that holds the range within this node
  * a left and right node and the value at this node

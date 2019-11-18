@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*Your task is to come up with a calendar for a particular month. The calendar should contain 6 rows representing weeks, and each row should contain 7 elements, one for each weekday, with Sunday being the first day of the week. Any empty cells in the calendar should be filled with zeros, and the first row should contain at least one non-empty cell.
 
 Given the month and the year, return the calendar as described above.

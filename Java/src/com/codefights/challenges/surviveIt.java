@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*Your spaceship is carrying the last few people from Earth towards a distant planet that will become the new home of the Earth civilization. You've just gotten a distress signal, and since nothing could possibly go wrong, you've decided to investigate the source of the signal.
 
 Unfortunately, it turns out that the signal was sent by a hostile alien army. Your spaceship is now facing n alien spacecrafts, and it's your duty to destroy them! Luckily, you have an amazing defense system that destroys half of the hostile army at a time by vaporizing all the enemy spacecrafts that are at odd positions.

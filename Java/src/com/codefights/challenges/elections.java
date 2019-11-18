@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*It's time for elections in CodeFightsLand! There are n social classes in CodeFightsLand, and the ith social class consists of i citizens numbered from 1 to i. People of all classes will take part in the elections voting for one of the two candidates: Tigran or his Rival.
 
 Here at CodeFightsLand we have a high-level democracy, which means that the voters of the highest class can vote for whomever they want. The voters of the lower classes, however, have slightly fewer rights. A person j of social class i < n votes for Tigran if and only if at least one of people j and j + 1 from class i + 1 casts their vote for Tigran.

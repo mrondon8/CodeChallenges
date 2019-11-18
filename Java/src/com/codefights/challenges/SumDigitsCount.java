@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 class SumDigitsCount {
 	// n, sum --> value of inputs
 	// out --> output array

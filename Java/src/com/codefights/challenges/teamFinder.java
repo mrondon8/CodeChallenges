@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*You just heard about a new Pokemon tournament. In order to compete in the tournament, you must follow these rules:
 
 You must use 2 Pokemon;

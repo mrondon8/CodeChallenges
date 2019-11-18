@@ -1,3 +1,4 @@
+package com.codefights.challenges;
 /*This is a reverse challenge, have fun!
 
 Input/Output
