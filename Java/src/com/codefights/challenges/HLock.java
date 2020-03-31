@@ -1,5 +1,7 @@
 package com.codefights.challenges;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class HLock {
@@ -41,14 +43,30 @@ public class HLock {
     // n = 8 => 25945920; 464.775s
     // n = 9 => 518918400: 152.837min (but it's maybe not the lowest value. I'm used 1..64 range of numbers).
 	public static void main(String[] args) {
-		int maxValue = 0;
-		for (int i = 50_000; i < 100_000; i++){
-			int c = factorCountFast(i);
-			if(c > 100){
-				maxValue = i;
-				System.out.println(c+":"+maxValue+":"+p);
-			}
-		}
+		int n = 4*4+1;
+		int h = 3;
+		int j = 6;
+		int i = 4;
+		for(int a = 1; a < n; a++)
+			for(int b = 1; b < n; b++)
+				for(int c = 1; c < n; c++)
+					for(int d = 1; d < n; d++)
+						for(int e = 1; e < n; e++)
+							for(int f = 1; f < n; f++)
+								for(int g = 1; g < n; g++)
+									if(new HashSet<Integer>(Arrays.asList(a,b,c,d,e,f,g,h,i,j)).size() == 10 && a*b*c*d == d*e*f*g && d*e*f*g == g*h*i*j)
+										System.out.println(a + "," 
+												+ b + ","
+												+ c + ","
+												+ d + ","
+												+ e + ","
+												+ f + ","
+												+ g + ","
+												+ h + ","
+												+ i + ","
+												+ j + " : " + a*b*c*d);
+				
+				
 	}
 }
 //[2, 2, 2, 2, 3, 3, 5, 7, 11]
