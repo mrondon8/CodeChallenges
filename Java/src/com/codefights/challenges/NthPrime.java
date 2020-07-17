@@ -3,7 +3,7 @@ package com.codefights.challenges;
 import java.util.BitSet;
 
 public class NthPrime {
-	int NthPrime(int n){
+	int nthPrime(int n){
 		int max = n*18;
 		BitSet isPrime  = new BitSet(max);
 		isPrime.set(0, max);
